@@ -9,6 +9,10 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://parentcompanyllc.com/privacy/freshguess/</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://parentcompanyllc.com/privacy/outside-timer.html</loc>
     <priority>0.4</priority>
   </url>
@@ -26,6 +30,10 @@
   </url>
   <url>
     <loc>https://parentcompanyllc.com/support/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://parentcompanyllc.com/support/freshguess/</loc>
     <priority>0.5</priority>
   </url>
   <url>
