@@ -5,6 +5,12 @@ Use the Fresh Guess pages as the current reference implementation when adding an
 - `support/freshguess/index.html`
 - `privacy/freshguess/index.html`
 
+For an app with a marketing page, use the Outside Timer group as the reference:
+
+- `outside-timer/index.html`
+- `outside-timer/support/index.html`
+- `outside-timer/privacy/index.html`
+
 ## Repeatable structure
 
 1. Create `support/[app-slug]/index.html` and `privacy/[app-slug]/index.html`.
@@ -12,6 +18,8 @@ Use the Fresh Guess pages as the current reference implementation when adding an
 3. Keep shared presentation in `style.css`; do not add app-specific styling unless the content truly requires it.
 4. Add the app to `support/index.html` and `privacy/index.html`.
 5. Add both production URLs to `sitemap.xml`.
+
+For a three-page app group, create `[app-slug]/index.html`, `[app-slug]/support/index.html`, and `[app-slug]/privacy/index.html`. Link all three from the homepage catalog and use the app page as the shared navigation hub.
 
 ## Required checks
 

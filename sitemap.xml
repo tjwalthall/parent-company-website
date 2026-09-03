@@ -13,7 +13,11 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://parentcompanyllc.com/privacy/outside-timer.html</loc>
+    <loc>https://parentcompanyllc.com/outside-timer/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://parentcompanyllc.com/outside-timer/privacy/</loc>
     <priority>0.4</priority>
   </url>
   <url>
@@ -37,7 +41,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parentcompanyllc.com/support/outside-timer.html</loc>
+    <loc>https://parentcompanyllc.com/outside-timer/support/</loc>
     <priority>0.5</priority>
   </url>
   <url>
