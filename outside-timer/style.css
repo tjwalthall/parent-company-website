@@ -1,216 +1,592 @@
-:root {
-  --ot-green: #39734a;
-  --ot-gold: #c48b1c;
-  --ot-blue: #3e7390;
-  --ot-rust: #9d4c32;
-  --ot-cream: #faf4df;
+html:has(.ot-page) {
+  scroll-padding-top: 0;
+}
+
+.ot-page {
+  --ot-paper: #f5f1e7;
+  --ot-ink: #202e22;
+  --ot-forest: #203627;
+  --ot-lime: #e5ed9e;
+  --ot-gutter: clamp(1.25rem, 6vw, 6.5rem);
+  background: var(--ot-paper);
+  color: var(--ot-ink);
+}
+
+.ot-page :focus-visible {
+  outline-color: currentColor;
+}
+
+.ot-container {
+  width: min(100%, 100rem);
+  margin-inline: auto;
+  padding-inline: var(--ot-gutter);
+}
+
+.ot-header {
+  min-height: 4.25rem;
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .ot-nav {
-  flex-direction: row;
-}
-
-.ot-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.72fr);
-  gap: clamp(2rem, 7vw, 8rem);
+  display: flex;
   align-items: center;
-  min-height: calc(100svh - 5.5rem);
-  padding: clamp(4rem, 8vw, 8rem) var(--page-pad);
-  background: linear-gradient(145deg, var(--paper) 0%, var(--ot-cream) 100%);
+  gap: clamp(1rem, 3vw, 2.75rem);
 }
 
-.ot-hero-copy {
-  max-width: 48rem;
+.ot-nav a,
+.ot-text-link {
+  font-size: 0.8rem;
+  font-weight: 650;
+  text-underline-offset: 0.3em;
+}
+
+.ot-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  text-decoration: none;
+}
+
+.ot-nav a:hover {
+  text-decoration: underline;
+}
+
+.ot-kicker {
+  margin-bottom: 1.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.ot-page h1,
+.ot-page h2 {
+  margin-bottom: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.057em;
+  line-height: 0.91;
+}
+
+.ot-page h2 {
+  font-size: clamp(3.1rem, 6.5vw, 7.1rem);
+}
+
+.ot-page h2 em {
+  font-weight: inherit;
+}
+
+.ot-copy > p:not(.ot-kicker),
+.ot-finale-lede {
+  max-width: 32rem;
+  margin: 1.65rem 0 0;
+  font-size: clamp(1.03rem, 1.5vw, 1.23rem);
+  line-height: 1.6;
+}
+
+.ot-copy .ot-aside {
+  font-weight: 650;
+}
+
+.ot-hero,
+.ot-finale {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--ot-forest);
+  color: var(--ot-paper);
+}
+
+.ot-backdrop,
+.ot-backdrop img,
+.ot-hero::before,
+.ot-finale::before {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ot-backdrop {
+  z-index: -2;
+}
+
+.ot-backdrop img {
+  display: block;
+  object-fit: cover;
+}
+
+.ot-hero::before,
+.ot-finale::before {
+  z-index: -1;
+  content: "";
+}
+
+.ot-hero::before {
+  background:
+    linear-gradient(90deg, rgb(17 35 22 / 94%) 0%, rgb(20 42 26 / 83%) 34%, rgb(19 37 25 / 28%) 72%, rgb(19 37 25 / 25%)),
+    linear-gradient(0deg, rgb(14 29 17 / 55%), transparent 55%);
+}
+
+.ot-hero-inner {
+  display: grid;
+  min-height: min(53rem, calc(100svh - 4.25rem));
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  align-items: center;
+  gap: 2rem;
+  padding-block: clamp(3.75rem, 8vh, 7rem);
+}
+
+.ot-hero .ot-kicker,
+.ot-finale .ot-kicker {
+  color: var(--ot-lime);
 }
 
 .ot-hero h1 {
-  margin: clamp(1.25rem, 3vw, 2.5rem) 0 2rem;
-  font-family: var(--serif);
-  font-size: clamp(4.25rem, 9.5vw, 9.5rem);
-  font-weight: 400;
-  letter-spacing: -0.065em;
-  line-height: 0.88;
+  font-size: clamp(6.2rem, 12.2vw, 13rem);
+  line-height: 0.77;
 }
 
-.ot-hero-copy > p:not(.eyebrow),
-.ot-closing > p:not(.eyebrow) {
-  max-width: 39rem;
-  color: var(--muted);
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  line-height: 1.55;
+.ot-hero-lede {
+  max-width: 25rem;
+  margin: 2.15rem 0 0;
+  font-size: clamp(1.04rem, 1.7vw, 1.36rem);
+  line-height: 1.48;
 }
 
-.ot-hero-copy .ot-lede {
-  color: var(--ink) !important;
-  font-size: clamp(1.35rem, 2.3vw, 2rem) !important;
-  line-height: 1.4 !important;
-}
-
-.ot-app-status {
-  display: inline-block;
-  margin-top: 1.75rem;
-  padding: 0.8rem 1.05rem 0.85rem;
-  border: 1px solid var(--ink);
-  font-size: 0.75rem;
+.ot-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.35rem;
+  min-height: 3rem;
+  margin-top: 1.65rem;
+  padding: 0.65rem 1rem 0.65rem 1.15rem;
+  border-radius: 100vw;
+  background: var(--ot-lime);
+  color: #182318;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background-color 180ms ease;
 }
 
-.ot-hero-visual,
-.ot-shot {
+.ot-button:hover {
+  background: #f3f7ca;
+}
+
+.ot-button:focus-visible {
+  outline-color: var(--ot-paper);
+}
+
+.ot-hero-device {
+  width: min(78%, 21rem, 29svh);
+  justify-self: center;
   margin: 0;
 }
 
-.ot-hero-visual img {
+.ot-hero-device img {
   display: block;
-  width: min(100%, 34rem);
+  width: 100%;
   height: auto;
-  margin: 0 auto;
+  filter: drop-shadow(0 1.4rem 1.2rem rgb(6 18 9 / 40%));
 }
 
-.ot-features {
-  border-top: 1px solid var(--line);
+.ot-phone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 634 / 1259;
+  filter: drop-shadow(0 1.4rem 1.2rem rgb(6 18 9 / 35%));
 }
 
-.ot-section-intro {
-  padding: clamp(5rem, 10vw, 10rem) var(--page-pad);
+.ot-phone-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 
-.ot-section-intro h2,
-.ot-privacy h2,
-.ot-closing h2 {
-  max-width: 65rem;
-  margin: 1.25rem 0 0;
-  font-family: var(--serif);
-  font-size: clamp(3rem, 7vw, 7rem);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
+.ot-phone-screen {
+  position: absolute;
+  inset: 2.383% 5.205% 2.224%;
+  overflow: hidden;
+  border-radius: 12.7% / 6%;
 }
 
-.ot-feature {
+.ot-phone-screen > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.ot-family {
+  background: #edf0e3;
+}
+
+.ot-family-inner {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  min-height: 44rem;
-  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 7rem);
+  padding-block: clamp(5rem, 9vw, 9rem);
 }
 
-.ot-feature:nth-of-type(even) .ot-shot {
-  order: 2;
-}
-
-.ot-shot {
+.ot-family-art {
+  position: relative;
   display: grid;
   place-items: center;
-  min-height: 42rem;
-  padding: clamp(2.5rem, 6vw, 6rem);
+  min-width: 0;
+  margin: 0;
+  isolation: isolate;
 }
 
-.ot-shot img {
+.ot-family-sun {
+  position: absolute;
+  z-index: -1;
+  width: min(100%, 32rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #d6e2ad;
+}
+
+.ot-family-art > img {
   display: block;
-  width: min(100%, 22rem);
+  width: min(57%, 17.5rem);
   height: auto;
+  filter: drop-shadow(0 1.4rem 1.2rem rgb(6 18 9 / 35%));
 }
 
-.ot-shot-gold {
-  background: linear-gradient(145deg, #f6efdc, #ead9a7);
+.ot-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid #a9b4a3;
+  border-radius: 100vw;
+  font: 650 0.94rem/1.25 var(--sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
 }
 
-.ot-shot-summer {
-  background: linear-gradient(145deg, #f8f0d5, #efd393);
+.ot-timer-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #42744b;
 }
 
-.ot-shot-autumn {
-  background: linear-gradient(145deg, #f3ebe2, #e5c4ae);
+.ot-story {
+  background: var(--ot-paper);
 }
 
-.ot-shot-winter {
-  background: linear-gradient(145deg, #edf2f3, #c7dde7);
+.ot-story-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 7rem);
+  padding-block: clamp(4rem, 7vw, 7rem);
 }
 
-.ot-shot-spring {
-  background: linear-gradient(145deg, #edf2e8, #c9ddc5);
+.ot-story h2 {
+  max-width: 16ch;
+  font-size: clamp(2.7rem, 4.6vw, 4.8rem);
 }
 
-.ot-feature-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(3.5rem, 8vw, 8rem) var(--page-pad);
+.ot-story-copy {
+  grid-column: 2;
+  grid-row: 1;
 }
 
-.ot-feature-copy h3 {
-  max-width: 38rem;
-  margin: 1.2rem 0 1.5rem;
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 400;
+.ot-story-photo {
+  grid-column: 1;
+  grid-row: 1;
+  width: min(100%, 30rem);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  margin: 0;
+}
+
+.ot-story-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+.ot-goal {
+  --goal-progress: 1;
+  background: #e7edaa;
+  color: #24321c;
+}
+
+.ot-goal-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 7rem);
+  min-height: min(48rem, 88svh);
+  padding-block: clamp(5rem, 10vw, 10rem);
+}
+
+.ot-goal-example {
+  width: min(100%, 27rem);
+  justify-self: center;
+  margin: 0;
+  text-align: center;
+}
+
+.ot-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(#4c6c38 calc(var(--goal-progress) * 62.4%), #cbd58b 0);
+}
+
+.ot-ring-label {
+  display: grid;
+  align-content: center;
+  place-items: center;
+  gap: 0.3rem;
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  background: #e7edaa;
+}
+
+.ot-ring-number {
+  font: 600 clamp(4.4rem, 10vw, 9rem)/1 ui-rounded, "SF Pro Rounded", var(--sans);
+  font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: -0.045em;
-  line-height: 1;
 }
 
-.ot-feature-copy > p:last-child {
-  max-width: 34rem;
-  margin-bottom: 0;
-  color: var(--muted);
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
-  line-height: 1.55;
+.ot-ring-unit,
+.ot-goal-example figcaption,
+.ot-history-art figcaption {
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.ot-goal-example figcaption {
+  margin-top: 1rem;
+}
+
+.ot-history {
+  background: #f2e8d8;
+}
+
+.ot-history-inner {
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.ot-history .ot-copy {
+  width: min(100%, 62rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ot-history .ot-copy > p {
+  margin-inline: auto;
+}
+
+.ot-history-art {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.75rem, 6vw, 6rem);
+  max-width: 43rem;
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+}
+
+.ot-history-art figure {
+  margin: 0;
+}
+
+.ot-history-art figure:nth-child(2) {
+  margin-top: clamp(1.75rem, 6vw, 6rem);
+}
+
+.ot-history-art figcaption {
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .ot-privacy {
+  background: var(--ot-forest);
+  color: var(--ot-paper);
+}
+
+.ot-privacy-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
-  gap: clamp(4rem, 10vw, 12rem);
-  padding: clamp(6rem, 12vw, 12rem) var(--page-pad);
-  background: var(--ink);
-  color: var(--paper);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.75fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: end;
+  padding-block: clamp(5rem, 10vw, 10rem);
 }
 
-.ot-privacy .eyebrow,
-.ot-privacy p {
-  color: var(--paper);
+.ot-privacy .ot-kicker,
+.ot-privacy h2 em {
+  color: var(--ot-lime);
 }
 
-.ot-privacy > div > p:not(.eyebrow) {
-  max-width: 42rem;
-  margin-top: 2rem;
-  color: var(--paper-deep);
-  font-family: var(--serif);
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  line-height: 1.55;
+.ot-privacy .ot-copy > p:first-child {
+  margin-top: 0;
 }
 
-.ot-privacy .text-link {
-  border-color: var(--paper);
+.ot-privacy .ot-text-link {
+  display: inline-block;
+  margin-top: 1.5rem;
 }
 
-.ot-privacy ul {
-  align-self: end;
+.ot-seasons {
+  --ot-season-bg: #e8edda;
+  position: relative;
+  height: 320svh;
+  background-color: var(--ot-season-bg);
+  transition: background-color 480ms ease;
+}
+
+.ot-seasons[data-active-season="summer"] {
+  --ot-season-bg: #f5e8c1;
+}
+
+.ot-seasons[data-active-season="autumn"] {
+  --ot-season-bg: #f4dfd0;
+}
+
+.ot-seasons[data-active-season="winter"] {
+  --ot-season-bg: #dde9eb;
+}
+
+.ot-seasons-inner {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: clamp(2rem, 8vw, 8rem);
+  min-height: 100svh;
+  padding-block: clamp(2rem, 6vh, 5rem);
+}
+
+.ot-season-stage {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--muted);
-  list-style: none;
 }
 
-.ot-privacy li {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.ot-season-phone {
+  width: min(78%, 19rem, 29svh);
 }
 
-.ot-closing {
-  padding: clamp(6rem, 13vw, 13rem) var(--page-pad);
-  background: linear-gradient(145deg, var(--paper) 0%, #e8efdf 100%);
+.ot-season-phone [data-season] {
+  opacity: 0;
+  transition: opacity 360ms ease;
 }
 
-.ot-closing > p:not(.eyebrow) {
-  margin-top: 2.5rem;
+.ot-seasons[data-active-season="spring"] [data-season="spring"],
+.ot-seasons[data-active-season="summer"] [data-season="summer"],
+.ot-seasons[data-active-season="autumn"] [data-season="autumn"],
+.ot-seasons[data-active-season="winter"] [data-season="winter"] {
+  opacity: 1;
+}
+
+.ot-season-stage figcaption {
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+@media (scripting: none) {
+  .ot-seasons {
+    height: auto;
+  }
+
+  .ot-seasons-inner {
+    position: static;
+  }
+}
+
+.ot-finale::before {
+  background: linear-gradient(180deg, rgb(14 28 17 / 91%), rgb(14 28 17 / 83%) 38%, rgb(15 32 19 / 15%) 95%);
+}
+
+.ot-finale .ot-backdrop img {
+  object-position: center 62%;
+}
+
+.ot-finale-inner {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  min-height: clamp(43rem, 72vw, 58rem);
+  padding-block: clamp(4rem, 9vw, 8rem) 17rem;
+  text-align: center;
+}
+
+.ot-finale h2 {
+  font-size: clamp(3rem, 8vw, 8.6rem);
+}
+
+.ot-finale-lede {
+  max-width: 34rem;
+}
+
+.ot-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.65rem;
+  padding: 0.55rem 0.95rem 0.55rem 0.55rem;
+  border-radius: 1.05rem;
+  background: var(--ot-paper);
+  color: var(--ot-ink);
+  text-align: left;
+  text-decoration: none;
+}
+
+.ot-availability:hover {
+  background: #fffbee;
+}
+
+.ot-availability img {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.6rem;
+}
+
+.ot-availability strong {
+  font-size: 0.89rem;
+}
+
+.ot-availability p {
+  margin: 0;
+  font-size: 0.77rem;
+}
+
+.ot-footer {
+  grid-template-columns: auto 1fr auto;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.ot-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .faq-item {
@@ -230,76 +606,156 @@
   margin-bottom: 0;
 }
 
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .ot-hero-device {
+      animation: ot-device-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+
+    @keyframes ot-device-recede {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: translateY(2.75rem) rotate(5deg) scale(0.91); }
+    }
+  }
+}
+
 @media (max-width: 760px) {
-  .ot-nav,
-  .site-nav.static-nav.ot-nav {
-    flex-direction: row;
-    gap: 1rem;
+  .ot-header {
+    min-height: 3.65rem;
   }
 
-  .ot-nav a,
-  .site-nav.static-nav.ot-nav a {
-    width: auto;
-    padding: 0.8rem 0;
+  .ot-header .wordmark {
+    font-size: 1.12rem;
+  }
+
+  .ot-nav {
+    gap: 0.95rem;
+  }
+
+  .ot-nav a {
+    font-size: 0.75rem;
   }
 
   .ot-nav a:first-child {
     display: none;
   }
 
-  .ot-hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    padding-top: 4.5rem;
+  .ot-store-prefix {
+    display: none;
+  }
+
+  .ot-hero-inner,
+  .ot-family-inner,
+  .ot-story-inner,
+  .ot-goal-inner,
+  .ot-privacy-inner,
+  .ot-seasons-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ot-story-copy,
+  .ot-story-photo {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .ot-hero::before {
+    background: linear-gradient(180deg, rgb(17 35 22 / 94%), rgb(20 42 26 / 81%) 34%, rgb(18 33 23 / 43%) 72%, rgb(17 35 22 / 70%));
+  }
+
+  .ot-hero .ot-backdrop img {
+    object-position: 52% center;
+  }
+
+  .ot-hero-inner {
+    gap: 2.65rem;
+    padding-block: 3rem 3.5rem;
   }
 
   .ot-hero h1 {
-    font-size: clamp(4rem, 18vw, 6.5rem);
+    font-size: clamp(5.15rem, 18.5vw, 8rem);
   }
 
-  .ot-hero-visual img {
-    width: min(100%, 27rem);
+  .ot-hero-lede {
+    margin-top: 1.5rem;
   }
 
-  .ot-feature {
-    grid-template-columns: 1fr;
+  .ot-hero-device {
+    width: min(54%, 15rem);
+  }
+
+  .ot-family-art {
+    margin-top: 1rem;
+  }
+
+  .ot-family-art > img {
+    width: min(54%, 15rem);
+  }
+
+  .ot-goal-inner {
     min-height: auto;
   }
 
-  .ot-feature:nth-of-type(even) .ot-shot {
-    order: 0;
+  .ot-goal-example {
+    width: min(78%, 22rem);
   }
 
-  .ot-shot {
-    min-height: 34rem;
-    padding: 3rem var(--page-pad);
+  .ot-privacy-inner {
+    gap: 1.4rem;
   }
 
-  .ot-shot img {
-    width: min(76vw, 19rem);
+  .ot-seasons-inner {
+    gap: 1.5rem;
+    align-content: center;
+    padding-block: 1.5rem;
   }
 
-  .ot-feature-copy {
-    padding-top: 4.5rem;
-    padding-bottom: 5rem;
+  .ot-seasons-copy h2 {
+    font-size: clamp(2.7rem, 11vw, 4rem);
   }
 
-  .ot-privacy {
-    grid-template-columns: 1fr;
+  .ot-seasons-copy > p:not(.ot-kicker) {
+    margin-top: 1rem;
+  }
+
+  .ot-seasons-copy .ot-kicker {
+    margin-bottom: 0.9rem;
+  }
+
+  .ot-season-phone {
+    width: min(48%, 14rem, 20svh);
+  }
+
+  .ot-season-stage {
+    gap: 0.8rem;
+  }
+
+  .ot-finale-inner {
+    min-height: 43rem;
   }
 }
 
-@media (max-width: 430px) {
-  .ot-nav,
-  .site-nav.static-nav.ot-nav {
-    gap: 0.75rem;
+@media (max-width: 440px) {
+  .ot-footer {
+    grid-template-columns: 1fr auto;
+    gap: 1.2rem;
   }
 
-  .ot-nav a {
-    font-size: 0.66rem;
+  .ot-footer .footer-mark {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.ot-page) {
+    scroll-behavior: auto;
   }
 
-  .ot-shot {
-    min-height: 30rem;
+  .ot-seasons,
+  .ot-season-phone [data-season],
+  .ot-button {
+    transition: none;
   }
 }
